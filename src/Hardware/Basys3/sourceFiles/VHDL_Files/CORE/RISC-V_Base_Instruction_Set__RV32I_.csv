@@ -1,0 +1,38 @@
+Instruction,Type,Operation,Description,Execution Unit,Writes rd?
+ADD,R,x[rd] = x[rs1] + x[rs2],Integer addition,ALU,yes
+SUB,R,x[rd] = x[rs1] - x[rs2],Integer subtraction,ALU,yes
+ADDI,I,x[rd] = x[rs1] + imm,Integer immediate addition,ALU,yes
+AND,R,x[rd] = x[rs1] & x[rs2],Bitwise AND,ALU,yes
+OR,R,x[rd] = x[rs1] | x[rs2],Bitwise OR,ALU,yes
+XOR,R,x[rd] = x[rs1] ^ x[rs2],Bitwise XOR,ALU,yes
+ANDI,I,x[rd] = x[rs1] & imm,Bitwise AND with immediate,ALU,yes
+ORI,I,x[rd] = x[rs1] | imm,Bitwise OR with immediate,ALU,yes
+XORI,I,x[rd] = x[rs1] ^ imm,Bitwise XOR with immediate,ALU,yes
+SLL,R,x[rd] = x[rs1] << x[rs2],Shift left logical,ALU,yes
+SRL,R,x[rd] = x[rs1] >> x[rs2],Shift right logical,ALU,yes
+SRA,R,x[rd] = x[rs1] >>> x[rs2],Shift right arithmetic,ALU,yes
+SLLI,I,x[rd] = x[rs1] << shamt,Shift left logical immediate,ALU,yes
+SRLI,I,x[rd] = x[rs1] >> shamt,Shift right logical immediate,ALU,yes
+SRAI,I,x[rd] = x[rs1] >>> shamt,Shift right arithmetic immediate,ALU,yes
+SLT,R,x[rd] = x[rs1] < x[rs2],Set less than (signed),ALU,yes
+SLTU,R,x[rd] = x[rs1] < x[rs2] (unsigned),Set less than unsigned,ALU,yes
+SLTI,I,x[rd] = x[rs1] < imm,Set less than immediate (signed),ALU,yes
+SLTIU,I,x[rd] = x[rs1] < imm (unsigned),Set less than unsigned immediate,ALU,yes
+BEQ,B,if (x[rs1] == x[rs2]) PC += offset,Branch if equal,Branch Unit,no
+BNE,B,if (x[rs1] != x[rs2]) PC += offset,Branch if not equal,Branch Unit,no
+BLT,B,if (x[rs1] < x[rs2]) PC += offset,Branch if less than (signed),Branch Unit,no
+BGE,B,if (x[rs1] >= x[rs2]) PC += offset,Branch if greater/equal (signed),Branch Unit,no
+BLTU,B,if (x[rs1] < x[rs2]) PC += offset,Branch if less than unsigned,Branch Unit,no
+BGEU,B,if (x[rs1] >= x[rs2]) PC += offset,Branch if greater/equal unsigned,Branch Unit,no
+JAL,J,x[rd] = PC+4; PC += offset,Jump and link,Control Unit,no
+JALR,I,x[rd] = PC+4; PC = x[rs1] + offset,Jump and link register,Control Unit,no
+LB,I,x[rd] = sign_extend(M[x[rs1]+offset][7:0]),Load byte,Load Unit,no
+LH,I,x[rd] = sign_extend(M[x[rs1]+offset][15:0]),Load halfword,Load Unit,no
+LW,I,x[rd] = M[x[rs1]+offset],Load word,Load Unit,no
+LBU,I,x[rd] = zero_extend(M[x[rs1]+offset][7:0]),Load byte unsigned,Load Unit,no
+LHU,I,x[rd] = zero_extend(M[x[rs1]+offset][15:0]),Load halfword unsigned,Load Unit,no
+SB,S,M[x[rs1]+offset][7:0] = x[rs2][7:0],Store byte,Store Unit,no
+SH,S,M[x[rs1]+offset][15:0] = x[rs2][15:0],Store halfword,Store Unit,no
+SW,S,M[x[rs1]+offset] = x[rs2],Store word,Store Unit,no
+LUI,U,x[rd] = imm << 12,Load upper immediate,Immediate Unit,yes
+AUIPC,U,x[rd] = PC + (imm << 12),Add upper immediate to PC,Immediate Unit,no
