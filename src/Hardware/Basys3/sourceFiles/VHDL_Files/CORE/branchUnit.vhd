@@ -2,7 +2,7 @@ LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
 USE ieee.numeric_std.ALL;
 
-ENTITY BranchUnit IS
+ENTITY branchUnit IS
     PORT (
         clk          : IN STD_LOGIC;
         reset        : IN STD_LOGIC;
@@ -16,7 +16,7 @@ ENTITY BranchUnit IS
     );
 END ENTITY;
 
-ARCHITECTURE Behavioral OF BranchUnit IS
+ARCHITECTURE Behavioral OF branchUnit IS
 
     -- Branch operation encodings
     CONSTANT BEQ  : STD_LOGIC_VECTOR(2 DOWNTO 0) := "000"; -- Branch if equal

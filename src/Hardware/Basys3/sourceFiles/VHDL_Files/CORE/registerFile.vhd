@@ -41,7 +41,7 @@ BEGIN
             FOR i IN 0 TO 30 LOOP
                 registers(i) <= (OTHERS => '0');
             END LOOP;
-            debug <= (others => '0');
+            debug <= (OTHERS => '0');
         ELSIF rising_edge(clk) THEN
             IF enable = '1' THEN
                 debug <= dataOutTmp(32 * 32 - 1 DOWNTO 32);
